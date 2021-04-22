@@ -64,7 +64,7 @@ Set jumpers of all cards as shown on picture below:
 Example cod can be found below, if different quantity than 4 cards used change value: *shiftno*
 
 ```basic
-  SETPIN 31, DOUT 'set pin 32 to latch the chip
+  SETPIN 31, DOUT 'set pin 31 to latch the chip
   SPI OPEN 195315, 0, 8 'mode 0, data size is 16 bits
   
   shiftno = 8 'number of shift registers(each card has 2 shift registers)

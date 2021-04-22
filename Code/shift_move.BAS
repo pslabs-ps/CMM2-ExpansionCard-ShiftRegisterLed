@@ -1,4 +1,4 @@
-SETPIN 31, DOUT 'set pin 32 to latch the chip
+SETPIN 31, DOUT 'set pin 31 to latch the chip
 SPI OPEN 195315, 0, 16 'mode 0, data size is 16 bits
 
 junk = SPI(&B00) ' send the command and ignore the return
