@@ -1,5 +1,5 @@
 # CMM2-ExpansionCard-ShiftRegisterLed
- helps to learn how shift registers work, 16 led operated from 3 pins, can be daisy chained
+Helps to learn how shift registers work, 16 led operated from 3 pins, can be daisy chained
 
 Schematic can be found here: [schematic REV A v02](/Schematic/shift_led_REVA_v01.pdf)
 
@@ -24,13 +24,13 @@ Expansion card used with this system have to have edges chamfered, using unchamf
 # Shift register single LED card sample code
 <img src="Images/example1.png" width="800">
 
-For purpuse of this code, card should be confugured as follows:
+For purpose of this code, card should be configured as follows:
 1. J6 power selector jumper set to 3V3 SY
 2. Connect MOSI to pin 19
 3. Connect SCK to pin 23
 4. Connect LATCH to pin 31
-5. Connect CS1 (chip sellect 1) to GND
-6. Connect CS2 (chip sellect 2) to GND
+5. Connect CS1 (chip select 1) to GND
+6. Connect CS2 (chip select 2) to GND
  
 ```basic
 SETPIN 31, DOUT 'set pin 31 to latch the chip
@@ -61,7 +61,7 @@ Set jumpers of all cards as shown on picture below:
 
 <img src="Images/example2.png" width="800">
 
-Example cod can be found below, if less that 4 cards are used change value: *shiftno*
+Example cod can be found below, if different quantity than 4 cards used change value: *shiftno*
 
 ```basic
   SETPIN 31, DOUT 'set pin 32 to latch the chip
