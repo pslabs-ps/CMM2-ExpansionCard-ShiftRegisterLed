@@ -28,7 +28,7 @@ For purpuse of this code, card should be confugured as follows:
 1. J6 power selector jumper set to 3V3 SY
 2. Connect MOSI to pin 19
 3. Connect SCK to pin 23
-4. Connect LATCH to CS1
+4. Connect LATCH to pin 31
 5. Connect CS1 (chip sellect 1) to GND
 6. Connect CS2 (chip sellect 2) to GND
  
