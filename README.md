@@ -61,7 +61,7 @@ Set jumpers of all cards as shown on picture below:
 
 <img src="Images/example2.png" width="800">
 
-Example cod can be found below, if less that 4 cards are used change value *shiftno*
+Example cod can be found below, if less that 4 cards are used change value: *shiftno*
 
 ```basic
   SETPIN 31, DOUT 'set pin 32 to latch the chip
