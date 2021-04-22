@@ -23,6 +23,7 @@ Expansion card used with this system have to have edges chamfered, using unchamf
  
 # Shift register LED card sample code
 <img src="Images/example1.png" width="800">
+
 For purpuse of this code, card should be confugured as follows:
 1. J6 power selector jumper set to 3V3 SY
 2. Connect MOSI to pin 19
