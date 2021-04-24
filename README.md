@@ -56,7 +56,7 @@ SPI CLOSE
 ```
 
 # Shift register multiple LED card sample code
-To connect multiple cards x1 to x18 lines can be used for cards to send overflowed QH signals.
+To connect multiple cards x1 to x18 lines can be used for cards to send overflowed QH signals. Multiple cards can draw more current than Maximite can supply, expansion Power Card should be used in that case.
 Set jumpers of all cards as shown on picture below:
 
 <img src="Images/example2.png" width="800">
