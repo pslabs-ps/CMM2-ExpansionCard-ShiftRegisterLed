@@ -76,7 +76,7 @@ Example cod can be found below, if different quantity than 4 cards used change v
   
 SUB ShiftSend c
   PIN(31) = 0
-  For i=0 to c-1
+  For i=c-1 to 0 STEP -1
     junk = SPI(tosend(i)) ' send the command and ignore the return
     PRINT tosend(i)
   NEXT i
@@ -89,7 +89,6 @@ SUB ShiftArray c
   if tosend(cnt2)<128 THEN
     tosend(cnt2)=tosend(cnt2)<<1
   ELSE
-    PRINT "else"
     cnt=1
     tosend(cnt2)=0
     cnt2=cnt2+1
@@ -99,13 +98,9 @@ SUB ShiftArray c
   
 END SUB
   
-  
-'ShiftSend(shiftno)
 tosend(cnt2)=1 'iniciate array with value to shift
 
   Do
-    
-    
     
     ShiftArray(cnt2)
     ShiftSend(shiftno)
