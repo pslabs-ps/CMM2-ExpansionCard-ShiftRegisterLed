@@ -1,4 +1,7 @@
 # CMM2-ExpansionCard-ShiftRegisterLed
+
+<img src="Images/green_ass.jpg" width="800">
+
 Helps to learn how shift registers work, 16 led operated from 3 pins, can be daisy chained
 
 Schematic can be found here: [schematic REV A v02](/Schematic/shift_led_REVA_v01.pdf)
