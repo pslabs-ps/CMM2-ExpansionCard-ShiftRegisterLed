@@ -73,7 +73,7 @@ Code Below will shift 1 in 16 bit value
 ...
 
 
-```gwbasic
+```basic
 SETPIN 31, DOUT 'set pin 31 to latch the chip
 SPI OPEN 195315, 0, 16 'open spi: speed, mode 0, data size is 16 bits
 
