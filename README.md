@@ -23,10 +23,40 @@ Expansion card used with this system have to have edges chamfered, using unchamf
 # Assembly
 1. Cut goldpin headers with pliers to correct length and install
 2. Install jumpers
- 
-# Shift register single LED card sample code
-<img src="Images/example1.png" width="800">
 
+# CODE EXAMPLE 1 - single card set LED
+For purpose of this code, card should be configured as follows:
+1. J6 power selector jumper set to 3V3 SY
+2. Connect MOSI to pin 19
+3. Connect SCK to pin 23
+4. Connect LATCH to pin 31
+5. Connect CS1 (chip select 1) to GND
+6. Connect CS2 (chip select 2) to GND
+
+Sending via SPI 1 is turrning on LEDm sending 0 will turn off LED, for exable sending binary number: 0101010101010101 will turn ON every 2nd LED, PIN 31 is used to latch the shift register
+
+
+```basic
+SETPIN 31, DOUT 'set pin 31 to latch the chip
+SPI OPEN 195315, 0, 16 'mode 0, data size is 16 bits
+  
+  
+  LED1 = &B0101010101010101
+
+  PIN(31) = 0
+  
+  junk = SPI(LED1)
+  
+  PIN(31) = 1
+	
+SPI CLOSE
+```
+
+
+ 
+# CODE EXAMPLE 2 - single card shifting LED
+<img src="Images/example1.png" width="800">
+	
 For purpose of this code, card should be configured as follows:
 1. J6 power selector jumper set to 3V3 SY
 2. Connect MOSI to pin 19
@@ -58,7 +88,9 @@ Loop
 SPI CLOSE 
 ```
 
-# Shift register multiple LED card sample code
+
+
+# CODE 3 - Shift register multiple LED card sample code
 To connect multiple cards x1 to x18 lines can be used for cards to send overflowed QH signals.
 
 **Multiple cards can draw more current than Maximite can supply, expansion Power Card should be used in that case.**
@@ -66,6 +98,17 @@ To connect multiple cards x1 to x18 lines can be used for cards to send overflow
 Set jumpers of all cards as shown on picture below if You use Power Card jumper J6 should be set to **3V3 PM**
 
 <img src="Images/example2.png" width="800">
+
+
+## Control each LED on card (display CMM)
+
+To send values to each to seperates cards send seperate SPI comands and latch the cards with pin 31. Picture below shows representation of C M M letters, This can be converted to bit values as shows in table.
+
+<img src="Images/cmm.png" width="800">
+
+
+
+## Shift LED on 4 cards
 
 Example cod can be found below, if different quantity than 4 cards used change value: *shiftno*
 
