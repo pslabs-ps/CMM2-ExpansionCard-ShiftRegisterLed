@@ -64,7 +64,15 @@ For purpose of this code, card should be configured as follows:
 4. Connect LATCH to pin 31
 5. Connect CS1 (chip select 1) to GND
 6. Connect CS2 (chip select 2) to GND
- 
+
+Code Below will shift 1 in 16 bit value
+
+0000000000000001
+0000000000000010
+0000000000000100
+...
+
+
 ```basic
 SETPIN 31, DOUT 'set pin 31 to latch the chip
 SPI OPEN 195315, 0, 16 'mode 0, data size is 16 bits
@@ -136,6 +144,24 @@ SPI CLOSE
 ## Shift LED on 4 cards
 
 Example cod can be found below, if different quantity than 4 cards used change value: *shiftno*
+
+Code Below will shift 1 in 16 bit value in all cards
+
+CARD 1:
+0000000000000001
+0000000000000010
+0000000000000100
+...
+
+CARD 2:
+0000000000000001
+0000000000000010
+0000000000000100
+...
+
+etc.
+
+
 
 ```basic
   SETPIN 31, DOUT 'set pin 31 to latch the chip
