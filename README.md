@@ -75,25 +75,26 @@ Code Below will shift 1 in 16 bit value
 
 ```basic
 SETPIN 31, DOUT 'set pin 31 to latch the chip
-SPI OPEN 195315, 0, 16 'mode 0, data size is 16 bits
+SPI OPEN 195315, 0, 16 'open spi: speed, mode 0, data size is 16 bits
 
-junk = SPI(&B00) ' send the command and ignore the return
+junk = SPI(&B00) 'send the command and ignore the return
+
+'this is latching and unlatching shift register chip, just in case
 PIN(31) = 1
 PIN(31) = 0
 
 Do
-cnt = 1
-Do While cnt<65536
-  junk = SPI(cnt) ' send the command and ignore the return
-  PIN(31) = 1
-  PIN(31) = 0
-  cnt=cnt<<1
-  'PRINT cnt
-  PAUSE 100
-Loop
+cnt = 1              'seed cnt with 1
+  Do While cnt<65536 'loop range for 16 bit value
+    PIN(31) = 0      'unlatch shift register
+    junk = SPI(cnt)  'send the command and ignore the return
+    PIN(31) = 1      'latch register
+    cnt=cnt<<1       'shift 1 in cnt
+    PAUSE 100        'pause
+  Loop
 Loop
 
-SPI CLOSE 
+SPI CLOSE 'close SPI
 ```
 
 
@@ -117,25 +118,26 @@ To send values to each to seperates cards send seperate SPI comands and latch th
 to send this values following code can be used:
 
 ```basic
-SETPIN 31, DOUT 'set pin 31 to latch the chip
+SETPIN 31, DOUT 'set pin 31 to latch the shift register chip
 SPI OPEN 195315, 0, 16 'mode 0, data size is 16 bits
   
   
-  
-  LED1 = &B111011111011111
-  LED2 = &B100010101010101
-  LED3 = &B100000101010101
-  LED4 = &B111000101010101
+  'set valuses for each card to be send
+  CARD1 = &B111011111011111
+  CARD2 = &B100010101010101
+  CARD3 = &B100000101010101
+  CARD4 = &B111000101010101
 
 
-  PIN(31) = 0
+  PIN(31) = 0 'set low latching pin
   
-  junk = SPI(LED1)
-  junk = SPI(LED2)
-  junk = SPI(LED3)
-  junk = SPI(LED4)
+  'send values via SPI
+  junk = SPI(CARD1)
+  junk = SPI(CARD2)
+  junk = SPI(CARD3)
+  junk = SPI(CARD4)
   
-  PIN(31) = 1
+  PIN(31) = 1 'set latching pin high to turn on register output
 	
 SPI CLOSE
 ```
